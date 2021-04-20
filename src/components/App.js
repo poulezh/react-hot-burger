@@ -6,6 +6,16 @@ import samlpleBurgers from '../sample-burgers'
 import Burger from './Burger'
 import base from '../base'
 
+
+
+
+// const App = props => {
+//   const [burger, setBurger] = useState({});
+//   const [order,setOrder]  = useState({})
+
+
+// }
+
 class App extends React.Component {
 
   state = {
@@ -21,7 +31,6 @@ class App extends React.Component {
       this.setState({ order: JSON.parse(localStorageRef)})
     }
     
-
     this.ref = base.syncState(`${params.restaurantId}/burgers`, {
       context: this,
       state: 'burgers'
@@ -40,7 +49,7 @@ class App extends React.Component {
 
   updateBurger = (key,updateBurger) => {
 
-    const burgers = {... this.state.burgers};
+    const burgers = {...this.state.burgers};
     burgers[key] = updateBurger
     this.setState({burgers})
 
@@ -49,7 +58,7 @@ class App extends React.Component {
   addBurger = (burger) => {
     
     //делаем копию обьекта  state
-    const burgers = {... this.state.burgers}
+    const burgers = {...this.state.burgers}
     burgers[`burger${Date.now()}`] = burger;
     //добавляем новый бургер в переменную burgers
     //записываем новый обьек в state
@@ -65,7 +74,7 @@ class App extends React.Component {
   }
 
   deleteFromOrder = key =>{
-    const order = {... this.state.order}
+    const order = {...this.state.order}
     delete order[key]
     this.setState({ order})
   }

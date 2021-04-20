@@ -14,7 +14,7 @@ const Burger = (props) => {
     return(
         <li className="menu-burger">
             <div className="image-container">
-                <img src={image}/>
+                <img src={image} alt=''/>
             </div>
 
             <div className="burger-details">

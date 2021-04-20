@@ -1,54 +1,53 @@
-import React from 'react';
+import React from "react";
 
-class  AddBurgerForm extends React.Component {
 
-    nameRef = React.createRef();
-    priceRef = React.createRef();
-    statusRef = React.createRef();
-    descRef = React.createRef();
-    imageRef = React.createRef();
+const AddBurgerForm = (props) => {
 
-    createBurger = (e) =>{
+    const nameRef = React.createRef();
+    const priceRef = React.createRef();
+    const statusRef = React.createRef();
+    const descRef = React.createRef();
+    const imageRef = React.createRef();
+
+    const createBurger = (e) =>{
         e.preventDefault()
         const burger = {
-            name: this.nameRef.current.value,
-            price: parseFloat(this.priceRef.current.value || 0),
-            status: this.statusRef.current.value,
-            desc: this.descRef.current.value,
-            image: this.imageRef.current.value
+            name: nameRef.current.value,
+            price: parseFloat(priceRef.current.value || 0),
+            status: statusRef.current.value,
+            desc: descRef.current.value,
+            image: imageRef.current.value
         }
-        this.props.addBurger(burger);
-
+        props.addBurger(burger);
         //обновляем поля формы
         e.currentTarget.reset();
-
     }
-    render (){
+
     return (
-        <form className="burger-edit" onSubmit={this.createBurger}>
+        <form className="burger-edit" onSubmit={createBurger}>
             <input 
-                ref={this.nameRef}
+                ref={nameRef}
                 name='name' 
                 type="text" 
                 placeholder='Название бургера' 
                 autoComplete='off'
             />
             <input
-                ref={this.priceRef}
+                ref={priceRef}
                 name='price' 
                 type="text" 
                 placeholder='Цена' 
                 autoComplete='off'
             />
 
-            <select ref={this.statusRef} name='status' className='status'>
+            <select ref={statusRef} name='status' className='status'>
                 <option value="available">Доступно</option>
                 <option value="unavailable ">Убрать из меню</option>
             </select>
 
-            <textarea ref={this.descRef} name='desc' placeholder='Состав'/>
+            <textarea ref={descRef} name='desc' placeholder='Состав'/>
             <input 
-                ref={this.imageRef}
+                ref={imageRef}
                 name='image' 
                 type="text" 
                 placeholder='фото бургера' 
@@ -58,7 +57,7 @@ class  AddBurgerForm extends React.Component {
         </form>
 
     )
-    }
 }
+ 
 
 export default AddBurgerForm
